@@ -20,33 +20,37 @@ import {
   SiMongodb,
   SiLangchain,
   SiGraphql
-} from 'react-icons/si'
+} from 'react-icons/si';
+import { RiJavaLine } from "react-icons/ri";
 
 // Tech Icon Component using react-icons
 const TechIcon = ({ icon: Icon, title }: { icon: React.ComponentType<any>, title: string }) => {
-  // Color mapping for better visibility
+  // Enhanced color mapping with better contrast
   const getIconColor = (iconTitle: string) => {
     const colorMap: { [key: string]: string } = {
-      'Python': '#3776ab',
-      'JavaScript': '#f7df1e',
-      'Java': '#f89820',
-      'React.js': '#61dafb',
-      'Spring Boot': '#6db33f',
-      'AWS': '#ff9900',
-      'Docker': '#0db7ed',
-      'Kubernetes': '#326ce5',
-      'PostgreSQL': '#4479a1',
-      'MongoDB': '#47a248',
-      'LangChain': '#4c9aff',
-      'gRPC': '#e10098'
+      'Python': '#18ccf5',        // Bright Python bl
+      'JavaScript': '#F7DF1E',    // JavaScript yellow
+      'Java': '#ED8B00',          // Java orange
+      'React.js': '#61DAFB',      // React cyan
+      'Spring Boot': '#6DB33F',   // Spring green
+      'AWS': '#FF9900',           // AWS orange
+      'Docker': '#2496ED',        // Docker blue
+      'Kubernetes': '#326CE5',    // Kubernetes blue
+      'PostgreSQL': 'cyan',    // PostgreSQL blue
+      'MongoDB': '#47A248',       // MongoDB green
+      'LangChain': 'cyan',     // Deep blue
+      'gRPC': '#e10098',      // Dark teal
     }
-    return colorMap[iconTitle] || '#6b7280'
+    return colorMap[iconTitle] || '#8B5CF6' // Purple fallback
   }
 
   return (
     <Icon 
-      className="w-5 h-5" 
-      style={{ color: getIconColor(title) }}
+      className="w-5 h-5 drop-shadow-sm" 
+      style={{ 
+        color: getIconColor(title),
+        filter: 'brightness(1.1) contrast(1.2)'
+      }}
       title={title}
     />
   )
@@ -56,7 +60,7 @@ export default function Home() {
   const skills = [
     { name: "Python", icon: SiPython },
     { name: "JavaScript", icon: SiJavascript },
-    { name: "Java", icon: SiOpenjdk },
+    { name: "Java", icon: RiJavaLine },
     { name: "React.js", icon: SiReact },
     { name: "Spring Boot", icon: SiSpring },
     { name: "AWS", icon: SiAmazon },
@@ -469,7 +473,7 @@ export default function Home() {
             <motion.div
               animate={{ x: ["0%", "-50%"] }}
               transition={{ 
-                duration: 20, 
+                duration: 10, 
                 repeat: Infinity, 
                 ease: "linear",
                 repeatType: "loop"
@@ -483,7 +487,7 @@ export default function Home() {
                   whileHover={{ 
                     scale: 1.1, 
                     backgroundColor: "rgba(59, 130, 246, 0.2)",
-                    transition: { duration: 0.2 }
+                    transition: { duration: 0.01 }
                   }}
                 >
                   <span className="flex items-center gap-1.5 md:gap-2">

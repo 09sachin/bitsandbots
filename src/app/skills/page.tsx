@@ -9,9 +9,7 @@ import { Code, Database, Cloud, Monitor, Smartphone, Zap } from "lucide-react"
 import {
   SiPython,
   SiJavascript,
-  SiOpenjdk,
   SiCplusplus,
-  SiMysql,
   SiGnubash,
   SiDjango,
   SiFlask,
@@ -23,24 +21,26 @@ import {
   SiDocker,
   SiAmazon,
   SiGit,
-  SiLinux,
   SiRedis,
   SiApachekafka,
   SiElasticsearch
-} from 'react-icons/si'
+} from 'react-icons/si';
+import { RiJavaLine } from "react-icons/ri";
+import { PiFileSql } from "react-icons/pi"; 
+import { FcLinux } from "react-icons/fc";
 
 // Tech Icon Component using react-icons
 const TechIcon = ({ icon: Icon, title }: { icon: React.ComponentType<any>, title: string }) => {
   // Color mapping for better visibility
   const getIconColor = (iconTitle: string) => {
     const colorMap: { [key: string]: string } = {
-      'Python': '#3776ab',
+      'Python': '#18ccf5',
       'JavaScript': '#f7df1e',
       'Java': '#f89820',
-      'C++': '#00599c',
-      'SQL': '#4479a1',
+      'C++': '#18ccf5',
+      'SQL': '#18ccf5',
       'Bash': '#4eaa25',
-      'Django': '#092e20',
+      'Django': 'green',
       'Flask': '#ff6b6b',
       'Spring Boot': '#6db33f',
       'React.js': '#61dafb',
@@ -50,7 +50,7 @@ const TechIcon = ({ icon: Icon, title }: { icon: React.ComponentType<any>, title
       'Docker': '#0db7ed',
       'AWS': '#ff9900',
       'Git': '#f05032',
-      'Linux': '#fcc624',
+      'Linux': '#ffffff',
       'Redis': '#dc382d',
       'Kafka': '#ff9500',
       'Elasticsearch': '#00bcd4'
@@ -81,9 +81,9 @@ export default function Skills() {
     // Languages/Databases
     { name: "Python", level: 95, category: "Languages", experience: "3+ years", icon: SiPython },
     { name: "JavaScript", level: 88, category: "Languages", experience: "3+ years", icon: SiJavascript },
-    { name: "Java", level: 85, category: "Languages", experience: "2+ years", icon: SiOpenjdk },
+    { name: "Java", level: 85, category: "Languages", experience: "2+ years", icon: RiJavaLine },
     { name: "C++", level: 82, category: "Languages", experience: "4+ years", icon: SiCplusplus },
-    { name: "SQL", level: 90, category: "Languages", experience: "3+ years", icon: SiMysql },
+    { name: "SQL", level: 90, category: "Languages", experience: "3+ years", icon: PiFileSql },
     { name: "Bash", level: 78, category: "Languages", experience: "2+ years", icon: SiGnubash },
 
     // Frameworks/Libraries
@@ -99,7 +99,7 @@ export default function Skills() {
     { name: "Docker", level: 88, category: "Tools", experience: "3+ years", icon: SiDocker },
     { name: "AWS", level: 90, category: "Tools", experience: "3+ years", icon: SiAmazon },
     { name: "Git", level: 92, category: "Tools", experience: "4+ years", icon: SiGit },
-    { name: "Linux", level: 85, category: "Tools", experience: "3+ years", icon: SiLinux },
+    { name: "Linux", level: 85, category: "Tools", experience: "3+ years", icon: FcLinux },
     { name: "Redis", level: 80, category: "Tools", experience: "2+ years", icon: SiRedis },
     { name: "Kafka", level: 78, category: "Tools", experience: "1+ years", icon: SiApachekafka },
     { name: "Elasticsearch", level: 75, category: "Tools", experience: "1+ years", icon: SiElasticsearch }
