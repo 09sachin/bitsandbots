@@ -6,24 +6,24 @@ import { Navigation } from "@/components/navigation"
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 
-// Import simple-icons
+// Import react-icons
 import {
-  siPython,
-  siJavascript,
-  siOpenjdk,
-  siReact,
-  siSpring,
-  siGoogle,
-  siDocker,
-  siKubernetes,
-  siPostgresql,
-  siMongodb,
-  siLangchain,
-  siGraphql
-} from 'simple-icons'
+  SiPython,
+  SiJavascript,
+  SiOpenjdk,
+  SiReact,
+  SiSpring,
+  SiAmazon,
+  SiDocker,
+  SiKubernetes,
+  SiPostgresql,
+  SiMongodb,
+  SiLangchain,
+  SiGraphql
+} from 'react-icons/si'
 
-// Tech Icon Component using simple-icons as proper React SVG components
-const TechIcon = ({ icon, title }: { icon: any, title: string }) => {
+// Tech Icon Component using react-icons
+const TechIcon = ({ icon: Icon, title }: { icon: React.ComponentType<any>, title: string }) => {
   // Color mapping for better visibility
   const getIconColor = (iconTitle: string) => {
     const colorMap: { [key: string]: string } = {
@@ -32,7 +32,7 @@ const TechIcon = ({ icon, title }: { icon: any, title: string }) => {
       'Java': '#f89820',
       'React.js': '#61dafb',
       'Spring Boot': '#6db33f',
-      'AWS': '#4285f4',
+      'AWS': '#ff9900',
       'Docker': '#0db7ed',
       'Kubernetes': '#326ce5',
       'PostgreSQL': '#4479a1',
@@ -40,40 +40,32 @@ const TechIcon = ({ icon, title }: { icon: any, title: string }) => {
       'LangChain': '#4c9aff',
       'gRPC': '#e10098'
     }
-    return colorMap[iconTitle] || `#${icon.hex}`
+    return colorMap[iconTitle] || '#6b7280'
   }
 
   return (
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill={getIconColor(title)}
-      className="w-5 h-5"
-      style={{ 
-        filter: 'brightness(1.1) saturate(1.2)'
-      }}
-    >
-      <title>{title}</title>
-      <path d={icon.path} />
-    </svg>
+    <Icon 
+      className="w-5 h-5" 
+      style={{ color: getIconColor(title) }}
+      title={title}
+    />
   )
 }
 
 export default function Home() {
   const skills = [
-    { name: "Python", icon: siPython },
-    { name: "JavaScript", icon: siJavascript },
-    { name: "Java", icon: siOpenjdk },
-    { name: "React.js", icon: siReact },
-    { name: "Spring Boot", icon: siSpring },
-    { name: "AWS", icon: siGoogle },
-    { name: "Docker", icon: siDocker },
-    { name: "Kubernetes", icon: siKubernetes },
-    { name: "PostgreSQL", icon: siPostgresql },
-    { name: "MongoDB", icon: siMongodb },
-    { name: "LangChain", icon: siLangchain },
-    { name: "gRPC", icon: siGraphql }
+    { name: "Python", icon: SiPython },
+    { name: "JavaScript", icon: SiJavascript },
+    { name: "Java", icon: SiOpenjdk },
+    { name: "React.js", icon: SiReact },
+    { name: "Spring Boot", icon: SiSpring },
+    { name: "AWS", icon: SiAmazon },
+    { name: "Docker", icon: SiDocker },
+    { name: "Kubernetes", icon: SiKubernetes },
+    { name: "PostgreSQL", icon: SiPostgresql },
+    { name: "MongoDB", icon: SiMongodb },
+    { name: "LangChain", icon: SiLangchain },
+    { name: "gRPC", icon: SiGraphql }
   ]
 
   // Looping terminal typing effect with auto-scroll

@@ -5,32 +5,32 @@ import { motion } from "framer-motion"
 import { Navigation } from "@/components/navigation"
 import { Code, Database, Cloud, Monitor, Smartphone, Zap } from "lucide-react"
 
-// Import simple-icons
+// Import react-icons
 import {
-  siPython,
-  siJavascript,
-  siOpenjdk,
-  siCplusplus,
-  siMysql,
-  siGnubash,
-  siDjango,
-  siFlask,
-  siSpring,
-  siReact,
-  siGraphql,
-  siLangchain,
-  siKubernetes,
-  siDocker,
-  siGoogle,
-  siGit,
-  siLinux,
-  siRedis,
-  siApachekafka,
-  siElasticsearch
-} from 'simple-icons'
+  SiPython,
+  SiJavascript,
+  SiOpenjdk,
+  SiCplusplus,
+  SiMysql,
+  SiGnubash,
+  SiDjango,
+  SiFlask,
+  SiSpring,
+  SiReact,
+  SiGraphql,
+  SiLangchain,
+  SiKubernetes,
+  SiDocker,
+  SiAmazon,
+  SiGit,
+  SiLinux,
+  SiRedis,
+  SiApachekafka,
+  SiElasticsearch
+} from 'react-icons/si'
 
-// Tech Icon Component using simple-icons as proper React SVG components
-const TechIcon = ({ icon, title }: { icon: any, title: string }) => {
+// Tech Icon Component using react-icons
+const TechIcon = ({ icon: Icon, title }: { icon: React.ComponentType<any>, title: string }) => {
   // Color mapping for better visibility
   const getIconColor = (iconTitle: string) => {
     const colorMap: { [key: string]: string } = {
@@ -48,30 +48,22 @@ const TechIcon = ({ icon, title }: { icon: any, title: string }) => {
       'LangChain': '#4c9aff',
       'Kubernetes': '#326ce5',
       'Docker': '#0db7ed',
-      'AWS': '#4285f4',
+      'AWS': '#ff9900',
       'Git': '#f05032',
       'Linux': '#fcc624',
       'Redis': '#dc382d',
       'Kafka': '#ff9500',
       'Elasticsearch': '#00bcd4'
     }
-    return colorMap[iconTitle] || `#${icon.hex}`
+    return colorMap[iconTitle] || '#6b7280'
   }
 
   return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill={getIconColor(title)}
-      className="w-6 h-6"
-      style={{ 
-        filter: 'brightness(1.1) saturate(1.2)'
-      }}
-    >
-      <title>{title}</title>
-      <path d={icon.path} />
-    </svg>
+    <Icon 
+      className="w-6 h-6" 
+      style={{ color: getIconColor(title) }}
+      title={title}
+    />
   )
 }
 
@@ -87,30 +79,30 @@ export default function Skills() {
 
   const skills = [
     // Languages/Databases
-    { name: "Python", level: 95, category: "Languages", experience: "3+ years", icon: siPython },
-    { name: "JavaScript", level: 88, category: "Languages", experience: "3+ years", icon: siJavascript },
-    { name: "Java", level: 85, category: "Languages", experience: "2+ years", icon: siOpenjdk },
-    { name: "C++", level: 82, category: "Languages", experience: "4+ years", icon: siCplusplus },
-    { name: "SQL", level: 90, category: "Languages", experience: "3+ years", icon: siMysql },
-    { name: "Bash", level: 78, category: "Languages", experience: "2+ years", icon: siGnubash },
+    { name: "Python", level: 95, category: "Languages", experience: "3+ years", icon: SiPython },
+    { name: "JavaScript", level: 88, category: "Languages", experience: "3+ years", icon: SiJavascript },
+    { name: "Java", level: 85, category: "Languages", experience: "2+ years", icon: SiOpenjdk },
+    { name: "C++", level: 82, category: "Languages", experience: "4+ years", icon: SiCplusplus },
+    { name: "SQL", level: 90, category: "Languages", experience: "3+ years", icon: SiMysql },
+    { name: "Bash", level: 78, category: "Languages", experience: "2+ years", icon: SiGnubash },
 
     // Frameworks/Libraries
-    { name: "Django", level: 88, category: "Frameworks", experience: "2+ years", icon: siDjango },
-    { name: "Flask", level: 92, category: "Frameworks", experience: "3+ years", icon: siFlask },
-    { name: "Spring Boot", level: 85, category: "Frameworks", experience: "2+ years", icon: siSpring },
-    { name: "React.js", level: 87, category: "Frameworks", experience: "3+ years", icon: siReact },
-    { name: "gRPC", level: 83, category: "Frameworks", experience: "1+ years", icon: siGraphql },
-    { name: "LangChain", level: 80, category: "Frameworks", experience: "1+ years", icon: siLangchain },
+    { name: "Django", level: 88, category: "Frameworks", experience: "2+ years", icon: SiDjango },
+    { name: "Flask", level: 92, category: "Frameworks", experience: "3+ years", icon: SiFlask },
+    { name: "Spring Boot", level: 85, category: "Frameworks", experience: "2+ years", icon: SiSpring },
+    { name: "React.js", level: 87, category: "Frameworks", experience: "3+ years", icon: SiReact },
+    { name: "gRPC", level: 83, category: "Frameworks", experience: "1+ years", icon: SiGraphql },
+    { name: "LangChain", level: 80, category: "Frameworks", experience: "1+ years", icon: SiLangchain },
 
     // Tools/Platforms
-    { name: "Kubernetes", level: 82, category: "Tools", experience: "2+ years", icon: siKubernetes },
-    { name: "Docker", level: 88, category: "Tools", experience: "3+ years", icon: siDocker },
-    { name: "AWS", level: 90, category: "Tools", experience: "3+ years", icon: siGoogle },
-    { name: "Git", level: 92, category: "Tools", experience: "4+ years", icon: siGit },
-    { name: "Linux", level: 85, category: "Tools", experience: "3+ years", icon: siLinux },
-    { name: "Redis", level: 80, category: "Tools", experience: "2+ years", icon: siRedis },
-    { name: "Kafka", level: 78, category: "Tools", experience: "1+ years", icon: siApachekafka },
-    { name: "Elasticsearch", level: 75, category: "Tools", experience: "1+ years", icon: siElasticsearch }
+    { name: "Kubernetes", level: 82, category: "Tools", experience: "2+ years", icon: SiKubernetes },
+    { name: "Docker", level: 88, category: "Tools", experience: "3+ years", icon: SiDocker },
+    { name: "AWS", level: 90, category: "Tools", experience: "3+ years", icon: SiAmazon },
+    { name: "Git", level: 92, category: "Tools", experience: "4+ years", icon: SiGit },
+    { name: "Linux", level: 85, category: "Tools", experience: "3+ years", icon: SiLinux },
+    { name: "Redis", level: 80, category: "Tools", experience: "2+ years", icon: SiRedis },
+    { name: "Kafka", level: 78, category: "Tools", experience: "1+ years", icon: SiApachekafka },
+    { name: "Elasticsearch", level: 75, category: "Tools", experience: "1+ years", icon: SiElasticsearch }
   ]
 
   const filteredSkills = selectedCategory === "All" 
