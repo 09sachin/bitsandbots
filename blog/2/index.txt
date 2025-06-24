@@ -1,0 +1,298 @@
+1:"$Sreact.fragment"
+2:I[1483,["177","static/chunks/app/layout-52b0ed560d6aa9f9.js"],"ThemeProvider"]
+3:I[7555,[],""]
+4:I[1295,[],""]
+6:I[9665,[],"OutletBoundary"]
+9:I[4911,[],"AsyncMetadataOutlet"]
+b:I[9665,[],"ViewportBoundary"]
+d:I[9665,[],"MetadataBoundary"]
+f:I[6614,[],""]
+:HL["/_next/static/media/bb3ef058b751a6ad-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/e4af272ccee01ff0-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/css/f816da9a8ebabc2d.css","style"]
+0:{"P":null,"b":"fhODdhU-pls6T2ir-A6cg","p":"","c":["","blog","2",""],"i":false,"f":[[["",{"children":["blog",{"children":[["id","2","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/f816da9a8ebabc2d.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":["$","body",null,{"className":"__variable_e8ce0c __variable_3c557b font-sans antialiased","children":["$","$L2",null,{"attribute":"class","defaultTheme":"dark","enableSystem":true,"disableTransitionOnChange":false,"children":["$","div",null,{"className":"relative min-h-screen","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]}]}]]}],{"children":["blog",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","2","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L5",null,["$","$L6",null,{"children":["$L7","$L8",["$","$L9",null,{"promise":"$@a"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","thSdBk3feq-KHC573JN8Ev",{"children":[["$","$Lb",null,{"children":"$Lc"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Ld",null,{"children":"$Le"}]]}],false]],"m":"$undefined","G":["$f","$undefined"],"s":false,"S":true}
+10:"$Sreact.suspense"
+11:I[4911,[],"AsyncMetadata"]
+13:I[4974,["732","static/chunks/732-68ee8a9996019d33.js","472","static/chunks/472-6e99f426b985ac0f.js","567","static/chunks/app/blog/%5Bid%5D/page-3ec1eb056193a50d.js"],"default"]
+e:["$","div",null,{"hidden":true,"children":["$","$10",null,{"fallback":null,"children":["$","$L11",null,{"promise":"$@12"}]}]}]
+14:T1ccb,
+# Building Intelligent AI Agents with LangChain
+
+## Introduction
+
+AI agents represent the next frontier in artificial intelligence - systems that can reason, plan, and execute complex tasks autonomously. With LangChain's powerful framework, we can build sophisticated agents that interact with external tools, maintain memory, and make intelligent decisions.
+
+## What are AI Agents?
+
+AI agents are autonomous systems that can:
+- **Perceive** their environment through various inputs
+- **Reason** about the best course of action
+- **Act** by using tools and executing plans
+- **Learn** from their experiences and interactions
+
+## LangChain Agent Architecture
+
+### Core Components
+
+1. **Agent Executor**: Orchestrates the agent's decision-making process
+2. **Tools**: External functions the agent can call
+3. **Memory**: Maintains conversation and task context
+4. **LLM**: Large language model for reasoning and planning
+
+### Agent Types
+
+LangChain provides several agent types:
+- **ReAct Agents**: Reason and Act in iterative cycles
+- **Plan-and-Execute**: Create comprehensive plans before execution
+- **OpenAI Functions**: Leverage function calling capabilities
+
+## Building Your First Agent
+
+### 1. Setting Up the Environment
+
+```python
+from langchain.agents import initialize_agent, Tool
+from langchain.llms import OpenAI
+from langchain.memory import ConversationBufferMemory
+from langchain.tools import DuckDuckGoSearchRun
+
+# Initialize the LLM
+llm = OpenAI(temperature=0.7)
+
+# Create memory for the agent
+memory = ConversationBufferMemory(
+    memory_key="chat_history",
+    return_messages=True
+)
+```
+
+### 2. Defining Tools
+
+```python
+# Web search tool
+search = DuckDuckGoSearchRun()
+
+# Custom calculator tool
+def calculator(expression: str) -> str:
+    """Calculate mathematical expressions safely."""
+    try:
+        result = eval(expression)
+        return f"The result is: {result}"
+    except:
+        return "Invalid mathematical expression"
+
+# File system tool
+def read_file(filename: str) -> str:
+    """Read content from a file."""
+    try:
+        with open(filename, 'r') as f:
+            return f.read()
+    except FileNotFoundError:
+        return f"File {filename} not found"
+
+tools = [
+    Tool(
+        name="Search",
+        func=search.run,
+        description="Search the web for current information"
+    ),
+    Tool(
+        name="Calculator",
+        func=calculator,
+        description="Perform mathematical calculations"
+    ),
+    Tool(
+        name="FileReader",
+        func=read_file,
+        description="Read content from files"
+    )
+]
+```
+
+### 3. Creating the Agent
+
+```python
+agent = initialize_agent(
+    tools=tools,
+    llm=llm,
+    agent_type="zero-shot-react-description",
+    memory=memory,
+    verbose=True,
+    max_iterations=5
+)
+```
+
+## Advanced Agent Patterns
+
+### Multi-Agent Systems
+
+```python
+class ResearchAgent:
+    def __init__(self):
+        self.researcher = self.create_researcher()
+        self.writer = self.create_writer()
+        self.reviewer = self.create_reviewer()
+    
+    def create_researcher(self):
+        research_tools = [search_tool, database_tool]
+        return initialize_agent(
+            tools=research_tools,
+            llm=llm,
+            agent_type="zero-shot-react-description"
+        )
+    
+    def process_query(self, query):
+        # Research phase
+        research_results = self.researcher.run(f"Research: {query}")
+        
+        # Writing phase
+        draft = self.writer.run(f"Write based on: {research_results}")
+        
+        # Review phase
+        final_result = self.reviewer.run(f"Review and improve: {draft}")
+        
+        return final_result
+```
+
+### Agent with Custom Memory
+
+```python
+from langchain.memory import ConversationSummaryBufferMemory
+
+# Advanced memory that summarizes old conversations
+memory = ConversationSummaryBufferMemory(
+    llm=llm,
+    max_token_limit=2000,
+    return_messages=True
+)
+
+# Agent with persistent context
+agent = initialize_agent(
+    tools=tools,
+    llm=llm,
+    memory=memory,
+    agent_type="conversational-react-description"
+)
+```
+
+## Real-World Applications
+
+### 1. Customer Support Agent
+
+```python
+def create_support_agent():
+    support_tools = [
+        knowledge_base_search,
+        ticket_creation_tool,
+        escalation_tool,
+        customer_history_tool
+    ]
+    
+    system_message = """
+    You are a helpful customer support agent. Your goals:
+    1. Understand customer issues clearly
+    2. Search knowledge base for solutions
+    3. Create tickets for unresolved issues
+    4. Escalate complex problems when needed
+    """
+    
+    return initialize_agent(
+        tools=support_tools,
+        llm=llm,
+        system_message=system_message
+    )
+```
+
+### 2. Data Analysis Agent
+
+```python
+def create_analyst_agent():
+    analysis_tools = [
+        sql_query_tool,
+        data_visualization_tool,
+        statistical_analysis_tool,
+        report_generation_tool
+    ]
+    
+    return initialize_agent(
+        tools=analysis_tools,
+        llm=llm,
+        agent_type="plan-and-execute"
+    )
+```
+
+## Best Practices
+
+### 1. Tool Design
+- **Clear descriptions**: Help the agent understand when to use each tool
+- **Error handling**: Robust error messages for failed tool calls
+- **Input validation**: Prevent malicious or malformed inputs
+
+### 2. Memory Management
+- **Selective memory**: Store only relevant information
+- **Memory cleanup**: Implement strategies to prevent memory overflow
+- **Context summarization**: Use summarization for long conversations
+
+### 3. Safety and Control
+- **Rate limiting**: Prevent excessive API calls
+- **Cost monitoring**: Track LLM usage and costs
+- **Human oversight**: Implement approval workflows for critical actions
+
+## Performance Optimization
+
+### Caching Strategies
+```python
+from functools import lru_cache
+
+@lru_cache(maxsize=100)
+def cached_search(query: str):
+    return search_tool.run(query)
+```
+
+### Parallel Execution
+```python
+import asyncio
+
+async def parallel_agent_execution(tasks):
+    agents = [create_specialized_agent(task) for task in tasks]
+    results = await asyncio.gather(*[
+        agent.arun(task) for agent, task in zip(agents, tasks)
+    ])
+    return results
+```
+
+## Monitoring and Debugging
+
+### Agent Callbacks
+```python
+from langchain.callbacks import BaseCallbackHandler
+
+class AgentMonitor(BaseCallbackHandler):
+    def on_tool_start(self, serialized, input_str, **kwargs):
+        print(f"Tool started: {serialized['name']}")
+    
+    def on_tool_end(self, output, **kwargs):
+        print(f"Tool finished: {output}")
+    
+    def on_agent_action(self, action, **kwargs):
+        print(f"Agent action: {action.tool}")
+```
+
+## Future Directions
+
+1. **Multi-modal agents**: Incorporating vision and audio capabilities
+2. **Reinforcement learning**: Agents that improve through interaction
+3. **Federated agents**: Collaborative agent networks
+4. **Specialized domains**: Agents tailored for specific industries
+
+## Conclusion
+
+LangChain provides a powerful framework for building intelligent AI agents that can tackle complex, multi-step tasks. By combining the right tools, memory systems, and reasoning patterns, we can create agents that truly augment human capabilities.
+
+The key to successful agent development lies in careful tool design, robust error handling, and continuous monitoring and improvement.
+    5:["$","$L13",null,{"post":{"id":2,"title":"Building Intelligent AI Agents with LangChain","excerpt":"A comprehensive guide to creating autonomous AI agents that can reason, plan, and execute complex tasks using LangChain framework.","content":"$14","category":"AI/ML","author":"Sachin Khoja","publishedAt":"2024-01-10","readTime":"16 min read","views":2156,"tags":["LangChain","AI Agents","Python","OpenAI","RAG"],"featured":true}}]
+8:null
+c:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+7:null
+a:{"metadata":[["$","title","0",{"children":"Software Developer Portfolio"}],["$","meta","1",{"name":"description","content":"Modern portfolio showcasing innovative software development projects and expertise."}],["$","meta","2",{"name":"author","content":"Software Developer"}],["$","meta","3",{"name":"keywords","content":"software developer,portfolio,web development,full stack,technology"}],["$","meta","4",{"property":"og:title","content":"Software Developer Portfolio"}],["$","meta","5",{"property":"og:description","content":"Modern portfolio showcasing innovative software development projects and expertise."}],["$","meta","6",{"property":"og:type","content":"website"}],["$","meta","7",{"name":"twitter:card","content":"summary"}],["$","meta","8",{"name":"twitter:title","content":"Software Developer Portfolio"}],["$","meta","9",{"name":"twitter:description","content":"Modern portfolio showcasing innovative software development projects and expertise."}],["$","link","10",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+12:{"metadata":"$a:metadata","error":null,"digest":"$undefined"}

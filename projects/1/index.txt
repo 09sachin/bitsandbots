@@ -1,0 +1,62 @@
+1:"$Sreact.fragment"
+2:I[1483,["177","static/chunks/app/layout-52b0ed560d6aa9f9.js"],"ThemeProvider"]
+3:I[7555,[],""]
+4:I[1295,[],""]
+6:I[9665,[],"OutletBoundary"]
+9:I[4911,[],"AsyncMetadataOutlet"]
+b:I[9665,[],"ViewportBoundary"]
+d:I[9665,[],"MetadataBoundary"]
+f:I[6614,[],""]
+:HL["/_next/static/media/bb3ef058b751a6ad-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/e4af272ccee01ff0-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/css/f816da9a8ebabc2d.css","style"]
+0:{"P":null,"b":"fhODdhU-pls6T2ir-A6cg","p":"","c":["","projects","1",""],"i":false,"f":[[["",{"children":["projects",{"children":[["id","1","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/f816da9a8ebabc2d.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":["$","body",null,{"className":"__variable_e8ce0c __variable_3c557b font-sans antialiased","children":["$","$L2",null,{"attribute":"class","defaultTheme":"dark","enableSystem":true,"disableTransitionOnChange":false,"children":["$","div",null,{"className":"relative min-h-screen","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]}]}]]}],{"children":["projects",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","1","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L5",null,["$","$L6",null,{"children":["$L7","$L8",["$","$L9",null,{"promise":"$@a"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","hIVwvlVi61bl7oLq-sA73v",{"children":[["$","$Lb",null,{"children":"$Lc"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Ld",null,{"children":"$Le"}]]}],false]],"m":"$undefined","G":["$f","$undefined"],"s":false,"S":true}
+10:"$Sreact.suspense"
+11:I[4911,[],"AsyncMetadata"]
+13:I[6207,["463","static/chunks/ede5dfc2-38fe2db0586954d9.js","732","static/chunks/732-68ee8a9996019d33.js","472","static/chunks/472-6e99f426b985ac0f.js","801","static/chunks/app/projects/%5Bid%5D/page-e9b1143402315458.js"],"default"]
+e:["$","div",null,{"hidden":true,"children":["$","$10",null,{"fallback":null,"children":["$","$L11",null,{"promise":"$@12"}]}]}]
+14:T823,
+This comprehensive regulatory data scraping engine represents a sophisticated solution for monitoring and analyzing utility regulations across the United States. The system combines traditional web scraping techniques with cutting-edge AI technologies to provide real-time insights into regulatory changes.
+
+## Key Features
+
+### Intelligent Data Collection
+- **Multi-source Integration**: Monitors 500+ regulatory websites across all 50 states
+- **Dynamic Content Handling**: Uses both BeautifulSoup and Selenium for JavaScript-heavy sites
+- **Smart Rate Limiting**: Implements hierarchical token bucket algorithms to respect server limits
+- **Proxy Rotation**: AWS-based proxy infrastructure ensures reliable access
+
+### AI-Powered Processing
+- **Document Classification**: Custom NLP models categorize documents by type and relevance
+- **Entity Extraction**: Identifies key regulatory entities, dates, and compliance requirements
+- **Semantic Search**: Vector embeddings enable intelligent content discovery
+- **Quality Assessment**: ML models validate document completeness and accuracy
+
+### Real-time Analytics
+- **Change Detection**: Monitors regulatory updates in real-time
+- **Impact Analysis**: Assesses potential business impact of regulatory changes
+- **Compliance Tracking**: Maintains compliance calendars and deadlines
+- **Automated Alerts**: Notifies stakeholders of critical regulatory updates
+
+## Technical Implementation
+
+The architecture follows a microservices pattern with:
+- **Scraping Layer**: Distributed scrapers with fault tolerance
+- **Processing Pipeline**: Kafka-based streaming for real-time processing
+- **AI Services**: Containerized ML models for scalable inference
+- **Data Layer**: PostgreSQL for structured data, Elasticsearch for search
+- **API Gateway**: RESTful APIs with GraphQL for complex queries
+
+## Impact and Results
+
+- **500+ sources** monitored continuously
+- **99.5% uptime** with automatic failover
+- **10,000+ documents** processed daily
+- **25% improvement** in compliance accuracy
+- **50ms average** response time for searches
+    5:["$","$L13",null,{"project":{"id":1,"title":"Regulatory Data Scraping Engine","description":"AI-powered scraping engine collecting regulatory data from 500+ U.S. utility sources with semantic search and NLP capabilities.","longDescription":"$14","category":"AI/ML","technologies":["Python","NLP","Vector Embeddings","Semantic Search","AWS","Kafka","PostgreSQL","Elasticsearch"],"image":"/api/placeholder/600/400","liveUrl":null,"githubUrl":null,"featured":true,"status":"In Production","timeline":"6 months","team":"4 engineers","role":"Lead Developer","company":"Vellex Computing","year":"2024","challenges":["Handling rate limits across 500+ diverse websites","Building scalable NLP pipeline for real-time processing","Ensuring 99.5% uptime for critical regulatory monitoring","Developing semantic search with high accuracy"],"achievements":["Successfully monitors 500+ regulatory sources","Processes 10,000+ documents daily","Achieved 25% improvement in compliance accuracy","Maintains 50ms average search response time"],"keyTechnologies":{"Python":"Core language for scraping and ML pipelines","NLP":"Custom models for document classification and entity extraction","Vector Embeddings":"Semantic search and document similarity","AWS":"Cloud infrastructure and serverless components","Kafka":"Real-time streaming and event processing","PostgreSQL":"Structured data storage and relationships","Elasticsearch":"Full-text search and analytics"}}}]
+8:null
+c:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+7:null
+a:{"metadata":[["$","title","0",{"children":"Software Developer Portfolio"}],["$","meta","1",{"name":"description","content":"Modern portfolio showcasing innovative software development projects and expertise."}],["$","meta","2",{"name":"author","content":"Software Developer"}],["$","meta","3",{"name":"keywords","content":"software developer,portfolio,web development,full stack,technology"}],["$","meta","4",{"property":"og:title","content":"Software Developer Portfolio"}],["$","meta","5",{"property":"og:description","content":"Modern portfolio showcasing innovative software development projects and expertise."}],["$","meta","6",{"property":"og:type","content":"website"}],["$","meta","7",{"name":"twitter:card","content":"summary"}],["$","meta","8",{"name":"twitter:title","content":"Software Developer Portfolio"}],["$","meta","9",{"name":"twitter:description","content":"Modern portfolio showcasing innovative software development projects and expertise."}],["$","link","10",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+12:{"metadata":"$a:metadata","error":null,"digest":"$undefined"}

@@ -1,0 +1,114 @@
+1:"$Sreact.fragment"
+2:I[1483,["177","static/chunks/app/layout-52b0ed560d6aa9f9.js"],"ThemeProvider"]
+3:I[7555,[],""]
+4:I[1295,[],""]
+6:I[9665,[],"OutletBoundary"]
+9:I[4911,[],"AsyncMetadataOutlet"]
+b:I[9665,[],"ViewportBoundary"]
+d:I[9665,[],"MetadataBoundary"]
+f:I[6614,[],""]
+:HL["/_next/static/media/bb3ef058b751a6ad-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/e4af272ccee01ff0-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/css/f816da9a8ebabc2d.css","style"]
+0:{"P":null,"b":"fhODdhU-pls6T2ir-A6cg","p":"","c":["","blog","1",""],"i":false,"f":[[["",{"children":["blog",{"children":[["id","1","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/f816da9a8ebabc2d.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":["$","body",null,{"className":"__variable_e8ce0c __variable_3c557b font-sans antialiased","children":["$","$L2",null,{"attribute":"class","defaultTheme":"dark","enableSystem":true,"disableTransitionOnChange":false,"children":["$","div",null,{"className":"relative min-h-screen","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]}]}]]}],{"children":["blog",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","1","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L5",null,["$","$L6",null,{"children":["$L7","$L8",["$","$L9",null,{"promise":"$@a"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","WQtqjqKfioBS3uZi09P4av",{"children":[["$","$Lb",null,{"children":"$Lc"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Ld",null,{"children":"$Le"}]]}],false]],"m":"$undefined","G":["$f","$undefined"],"s":false,"S":true}
+10:"$Sreact.suspense"
+11:I[4911,[],"AsyncMetadata"]
+13:I[4974,["732","static/chunks/732-68ee8a9996019d33.js","472","static/chunks/472-6e99f426b985ac0f.js","567","static/chunks/app/blog/%5Bid%5D/page-3ec1eb056193a50d.js"],"default"]
+e:["$","div",null,{"hidden":true,"children":["$","$10",null,{"fallback":null,"children":["$","$L11",null,{"promise":"$@12"}]}]}]
+14:Te85,
+# Building Scalable Scraping Engines for Regulatory Data
+
+## Introduction
+
+In today's data-driven world, regulatory compliance requires access to vast amounts of information from multiple sources. At Vellex Computing, I built a sophisticated scraping engine that processes over 500 utility sources across the United States, combining traditional web scraping with AI-powered classification and semantic search capabilities.
+
+## Architecture Overview
+
+The system follows a modular architecture with these core components:
+
+### 1. Data Collection Layer
+- **Multi-source scraping**: BeautifulSoup and Selenium for dynamic content
+- **Rate limiting**: Hierarchical token bucket implementation
+- **Error handling**: Exponential backoff with circuit breakers
+- **Proxy rotation**: AWS-based proxy pool for reliability
+
+### 2. AI Processing Pipeline
+- **NLP Classification**: Custom transformer models for document categorization
+- **Entity Extraction**: Named Entity Recognition for key regulatory terms
+- **Vector Embeddings**: Sentence transformers for semantic similarity
+- **Quality Assessment**: ML models for content validation
+
+### 3. Search and Retrieval
+- **Hybrid Search**: Combining BM25 and vector similarity
+- **Semantic Indexing**: FAISS for efficient vector operations
+- **Real-time Updates**: Change detection and incremental indexing
+
+## Implementation Details
+
+### Web Scraping at Scale
+
+```python
+import asyncio
+import aiohttp
+from bs4 import BeautifulSoup
+from selenium import webdriver
+
+class ScalingEngine:
+    def __init__(self, max_concurrent=10):
+        self.semaphore = asyncio.Semaphore(max_concurrent)
+        self.session = aiohttp.ClientSession()
+    
+    async def scrape_source(self, url, source_config):
+        async with self.semaphore:
+            # Rate limiting and error handling
+            await self.rate_limiter.acquire(source_config.domain)
+            
+            try:
+                async with self.session.get(url) as response:
+                    content = await response.text()
+                    return self.parse_content(content, source_config)
+            except Exception as e:
+                await self.handle_error(e, url)
+```
+
+### AI-Powered Classification
+
+The system uses a multi-stage classification approach:
+
+1. **Document Type Classification**: Regulatory notice, compliance update, enforcement action
+2. **Regulatory Domain**: Environmental, financial, safety, etc.
+3. **Priority Scoring**: ML model predicting regulatory impact
+
+### Performance Optimizations
+
+- **Async Processing**: 10,000+ documents processed concurrently
+- **Caching Strategy**: Redis for frequently accessed documents
+- **Database Optimization**: PostgreSQL with proper indexing
+- **CDN Integration**: CloudFront for global content delivery
+
+## Results and Impact
+
+- **500+ sources** monitored daily
+- **10,000+ documents** processed per day
+- **99.5% uptime** with robust error handling
+- **50ms average** search response time
+- **25% improvement** in regulatory compliance accuracy
+
+## Key Learnings
+
+1. **Rate limiting is crucial** for sustainable scraping
+2. **AI classification** significantly improves data quality
+3. **Hybrid search** provides better relevance than either approach alone
+4. **Monitoring and alerting** are essential for production systems
+
+## Conclusion
+
+Building a scalable scraping engine requires careful consideration of both technical and ethical factors. The combination of traditional web scraping techniques with modern AI capabilities creates powerful systems that can handle the complexity of regulatory data at scale.
+
+The system continues to evolve, with ongoing improvements in AI accuracy, performance optimization, and coverage expansion.
+    5:["$","$L13",null,{"post":{"id":1,"title":"Building Scalable Scraping Engines for Regulatory Data","excerpt":"Learn how to build robust data scraping systems that can handle 500+ sources with AI-powered classification and semantic search.","content":"$14","category":"AI/ML","author":"Sachin Khoja","publishedAt":"2024-01-15","readTime":"12 min read","views":1248,"tags":["Python","NLP","Web Scraping","AI/ML"],"featured":true}}]
+8:null
+c:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+7:null
+a:{"metadata":[["$","title","0",{"children":"Software Developer Portfolio"}],["$","meta","1",{"name":"description","content":"Modern portfolio showcasing innovative software development projects and expertise."}],["$","meta","2",{"name":"author","content":"Software Developer"}],["$","meta","3",{"name":"keywords","content":"software developer,portfolio,web development,full stack,technology"}],["$","meta","4",{"property":"og:title","content":"Software Developer Portfolio"}],["$","meta","5",{"property":"og:description","content":"Modern portfolio showcasing innovative software development projects and expertise."}],["$","meta","6",{"property":"og:type","content":"website"}],["$","meta","7",{"name":"twitter:card","content":"summary"}],["$","meta","8",{"name":"twitter:title","content":"Software Developer Portfolio"}],["$","meta","9",{"name":"twitter:description","content":"Modern portfolio showcasing innovative software development projects and expertise."}],["$","link","10",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+12:{"metadata":"$a:metadata","error":null,"digest":"$undefined"}

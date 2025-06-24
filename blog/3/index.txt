@@ -1,0 +1,432 @@
+1:"$Sreact.fragment"
+2:I[1483,["177","static/chunks/app/layout-52b0ed560d6aa9f9.js"],"ThemeProvider"]
+3:I[7555,[],""]
+4:I[1295,[],""]
+6:I[9665,[],"OutletBoundary"]
+9:I[4911,[],"AsyncMetadataOutlet"]
+b:I[9665,[],"ViewportBoundary"]
+d:I[9665,[],"MetadataBoundary"]
+f:I[6614,[],""]
+:HL["/_next/static/media/bb3ef058b751a6ad-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/e4af272ccee01ff0-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/css/f816da9a8ebabc2d.css","style"]
+0:{"P":null,"b":"fhODdhU-pls6T2ir-A6cg","p":"","c":["","blog","3",""],"i":false,"f":[[["",{"children":["blog",{"children":[["id","3","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/f816da9a8ebabc2d.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":["$","body",null,{"className":"__variable_e8ce0c __variable_3c557b font-sans antialiased","children":["$","$L2",null,{"attribute":"class","defaultTheme":"dark","enableSystem":true,"disableTransitionOnChange":false,"children":["$","div",null,{"className":"relative min-h-screen","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]}]}]]}],{"children":["blog",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","3","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L5",null,["$","$L6",null,{"children":["$L7","$L8",["$","$L9",null,{"promise":"$@a"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","WwC7JgpBcGvnbl-OcPnlyv",{"children":[["$","$Lb",null,{"children":"$Lc"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Ld",null,{"children":"$Le"}]]}],false]],"m":"$undefined","G":["$f","$undefined"],"s":false,"S":true}
+10:"$Sreact.suspense"
+11:I[4911,[],"AsyncMetadata"]
+13:I[4974,["732","static/chunks/732-68ee8a9996019d33.js","472","static/chunks/472-6e99f426b985ac0f.js","567","static/chunks/app/blog/%5Bid%5D/page-3ec1eb056193a50d.js"],"default"]
+e:["$","div",null,{"hidden":true,"children":["$","$10",null,{"fallback":null,"children":["$","$L11",null,{"promise":"$@12"}]}]}]
+14:T31e4,
+# Designing Hierarchical Rate Limiting Systems
+
+## Introduction
+
+Rate limiting is crucial for protecting systems from abuse, ensuring fair resource allocation, and maintaining system stability. In high-throughput applications, a well-designed rate limiting system can mean the difference between a responsive service and a crashed system.
+
+## Why Rate Limiting Matters
+
+### System Protection
+- **Resource conservation**: Prevent resource exhaustion
+- **DDoS mitigation**: Protect against denial-of-service attacks
+- **Cost control**: Manage API costs and infrastructure usage
+
+### Fair Usage
+- **Equal access**: Ensure all users get fair resource allocation
+- **Quality of service**: Maintain consistent performance
+- **Priority handling**: Give premium users better access
+
+## Rate Limiting Algorithms
+
+### 1. Token Bucket Algorithm
+
+The token bucket algorithm provides flexible rate limiting with burst capacity.
+
+```python
+import time
+import threading
+from typing import Optional
+
+class TokenBucket:
+    def __init__(self, capacity: int, refill_rate: float):
+        self.capacity = capacity
+        self.refill_rate = refill_rate  # tokens per second
+        self.tokens = capacity
+        self.last_refill = time.time()
+        self.lock = threading.Lock()
+    
+    def consume(self, tokens: int = 1) -> bool:
+        with self.lock:
+            now = time.time()
+            # Add tokens based on elapsed time
+            elapsed = now - self.last_refill
+            self.tokens = min(
+                self.capacity,
+                self.tokens + elapsed * self.refill_rate
+            )
+            self.last_refill = now
+            
+            if self.tokens >= tokens:
+                self.tokens -= tokens
+                return True
+            return False
+    
+    def available_tokens(self) -> float:
+        with self.lock:
+            now = time.time()
+            elapsed = now - self.last_refill
+            return min(
+                self.capacity,
+                self.tokens + elapsed * self.refill_rate
+            )
+```
+
+### 2. Sliding Window Log
+
+Precise rate limiting by tracking request timestamps.
+
+```python
+from collections import deque
+import time
+
+class SlidingWindowLog:
+    def __init__(self, limit: int, window_size: int):
+        self.limit = limit
+        self.window_size = window_size
+        self.requests = deque()
+        self.lock = threading.Lock()
+    
+    def allow_request(self) -> bool:
+        with self.lock:
+            now = time.time()
+            
+            # Remove old requests outside the window
+            while self.requests and self.requests[0] <= now - self.window_size:
+                self.requests.popleft()
+            
+            if len(self.requests) < self.limit:
+                self.requests.append(now)
+                return True
+            return False
+```
+
+### 3. Fixed Window Counter
+
+Simple counting with fixed time windows.
+
+```python
+import time
+from collections import defaultdict
+
+class FixedWindowCounter:
+    def __init__(self, limit: int, window_size: int):
+        self.limit = limit
+        self.window_size = window_size
+        self.windows = defaultdict(int)
+        self.lock = threading.Lock()
+    
+    def allow_request(self) -> bool:
+        with self.lock:
+            current_window = int(time.time()) // self.window_size
+            
+            if self.windows[current_window] < self.limit:
+                self.windows[current_window] += 1
+                return True
+            return False
+```
+
+## Hierarchical Rate Limiting Design
+
+### Multi-Level Architecture
+
+```python
+class HierarchicalRateLimiter:
+    def __init__(self):
+        self.global_limiter = TokenBucket(10000, 100)  # Global limit
+        self.user_limiters = {}  # Per-user limits
+        self.endpoint_limiters = {}  # Per-endpoint limits
+        self.ip_limiters = {}  # Per-IP limits
+    
+    def check_limits(self, user_id: str, endpoint: str, ip: str) -> tuple[bool, str]:
+        # Check global limit first
+        if not self.global_limiter.consume():
+            return False, "Global rate limit exceeded"
+        
+        # Check IP-based limit
+        ip_limiter = self.get_ip_limiter(ip)
+        if not ip_limiter.consume():
+            return False, "IP rate limit exceeded"
+        
+        # Check user-specific limit
+        user_limiter = self.get_user_limiter(user_id)
+        if not user_limiter.consume():
+            return False, "User rate limit exceeded"
+        
+        # Check endpoint-specific limit
+        endpoint_limiter = self.get_endpoint_limiter(endpoint)
+        if not endpoint_limiter.consume():
+            return False, "Endpoint rate limit exceeded"
+        
+        return True, "Request allowed"
+    
+    def get_user_limiter(self, user_id: str) -> TokenBucket:
+        if user_id not in self.user_limiters:
+            # Different limits for different user tiers
+            if self.is_premium_user(user_id):
+                self.user_limiters[user_id] = TokenBucket(1000, 10)
+            else:
+                self.user_limiters[user_id] = TokenBucket(100, 1)
+        return self.user_limiters[user_id]
+    
+    def get_endpoint_limiter(self, endpoint: str) -> TokenBucket:
+        if endpoint not in self.endpoint_limiters:
+            # Heavy endpoints get stricter limits
+            if endpoint in ['/search', '/export']:
+                self.endpoint_limiters[endpoint] = TokenBucket(50, 0.5)
+            else:
+                self.endpoint_limiters[endpoint] = TokenBucket(200, 2)
+        return self.endpoint_limiters[endpoint]
+    
+    def get_ip_limiter(self, ip: str) -> TokenBucket:
+        if ip not in self.ip_limiters:
+            self.ip_limiters[ip] = TokenBucket(500, 5)
+        return self.ip_limiters[ip]
+```
+
+## Distributed Rate Limiting
+
+### Redis-Based Implementation
+
+```python
+import redis
+import json
+
+class DistributedRateLimiter:
+    def __init__(self, redis_client: redis.Redis):
+        self.redis = redis_client
+    
+    def check_rate_limit(self, key: str, limit: int, window: int) -> tuple[bool, dict]:
+        """
+        Sliding window rate limiter using Redis
+        """
+        pipeline = self.redis.pipeline()
+        now = time.time()
+        
+        # Remove old entries
+        pipeline.zremrangebyscore(key, 0, now - window)
+        
+        # Count current requests
+        pipeline.zcard(key)
+        
+        # Add current request
+        pipeline.zadd(key, {str(now): now})
+        
+        # Set expiration
+        pipeline.expire(key, window)
+        
+        results = pipeline.execute()
+        current_requests = results[1]
+        
+        allowed = current_requests < limit
+        remaining = max(0, limit - current_requests - 1)
+        
+        if not allowed:
+            # Remove the request we just added
+            self.redis.zrem(key, str(now))
+        
+        return allowed, {
+            'allowed': allowed,
+            'remaining': remaining,
+            'reset_time': now + window,
+            'current': current_requests
+        }
+```
+
+### Lua Script for Atomic Operations
+
+```lua
+-- Redis Lua script for atomic rate limiting
+local key = KEYS[1]
+local limit = tonumber(ARGV[1])
+local window = tonumber(ARGV[2])
+local now = tonumber(ARGV[3])
+
+-- Remove expired entries
+redis.call('ZREMRANGEBYSCORE', key, 0, now - window)
+
+-- Get current count
+local current = redis.call('ZCARD', key)
+
+if current < limit then
+    -- Add current request
+    redis.call('ZADD', key, now, now)
+    redis.call('EXPIRE', key, window)
+    return {1, limit - current - 1}
+else
+    return {0, 0}
+end
+```
+
+## Advanced Patterns
+
+### Adaptive Rate Limiting
+
+```python
+class AdaptiveRateLimiter:
+    def __init__(self, base_limit: int):
+        self.base_limit = base_limit
+        self.current_limit = base_limit
+        self.error_rate = 0.0
+        self.response_time_avg = 0.0
+        self.adjustment_factor = 0.1
+    
+    def update_metrics(self, response_time: float, is_error: bool):
+        # Update moving averages
+        self.response_time_avg = (
+            0.9 * self.response_time_avg + 0.1 * response_time
+        )
+        self.error_rate = (
+            0.9 * self.error_rate + 0.1 * (1.0 if is_error else 0.0)
+        )
+        
+        # Adjust limits based on system health
+        if self.error_rate > 0.05 or self.response_time_avg > 1.0:
+            # System under stress, reduce limits
+            self.current_limit = max(
+                self.base_limit * 0.1,
+                self.current_limit * (1 - self.adjustment_factor)
+            )
+        else:
+            # System healthy, gradually increase limits
+            self.current_limit = min(
+                self.base_limit * 2,
+                self.current_limit * (1 + self.adjustment_factor)
+            )
+```
+
+### Circuit Breaker Integration
+
+```python
+from enum import Enum
+
+class CircuitState(Enum):
+    CLOSED = "closed"
+    OPEN = "open"
+    HALF_OPEN = "half_open"
+
+class CircuitBreakerRateLimiter:
+    def __init__(self, failure_threshold: int, recovery_timeout: int):
+        self.failure_threshold = failure_threshold
+        self.recovery_timeout = recovery_timeout
+        self.failure_count = 0
+        self.last_failure_time = 0
+        self.state = CircuitState.CLOSED
+        self.rate_limiter = TokenBucket(100, 1)
+    
+    def allow_request(self) -> bool:
+        if self.state == CircuitState.OPEN:
+            if time.time() - self.last_failure_time > self.recovery_timeout:
+                self.state = CircuitState.HALF_OPEN
+            else:
+                return False
+        
+        if self.state == CircuitState.HALF_OPEN:
+            # Allow limited requests to test system health
+            self.rate_limiter = TokenBucket(10, 0.1)
+        
+        return self.rate_limiter.consume()
+    
+    def record_success(self):
+        if self.state == CircuitState.HALF_OPEN:
+            self.state = CircuitState.CLOSED
+            self.failure_count = 0
+            self.rate_limiter = TokenBucket(100, 1)  # Restore normal limits
+    
+    def record_failure(self):
+        self.failure_count += 1
+        self.last_failure_time = time.time()
+        
+        if self.failure_count >= self.failure_threshold:
+            self.state = CircuitState.OPEN
+```
+
+## Monitoring and Metrics
+
+### Rate Limiting Metrics
+
+```python
+from dataclasses import dataclass
+from typing import Dict
+
+@dataclass
+class RateLimitMetrics:
+    total_requests: int = 0
+    allowed_requests: int = 0
+    blocked_requests: int = 0
+    bucket_utilization: float = 0.0
+    
+    @property
+    def block_rate(self) -> float:
+        if self.total_requests == 0:
+            return 0.0
+        return self.blocked_requests / self.total_requests
+
+class MonitoredRateLimiter:
+    def __init__(self, bucket: TokenBucket):
+        self.bucket = bucket
+        self.metrics = RateLimitMetrics()
+    
+    def consume(self, tokens: int = 1) -> bool:
+        self.metrics.total_requests += 1
+        
+        if self.bucket.consume(tokens):
+            self.metrics.allowed_requests += 1
+            return True
+        else:
+            self.metrics.blocked_requests += 1
+            return False
+    
+    def get_metrics(self) -> Dict:
+        self.metrics.bucket_utilization = (
+            1.0 - self.bucket.available_tokens() / self.bucket.capacity
+        )
+        return {
+            'total_requests': self.metrics.total_requests,
+            'allowed_requests': self.metrics.allowed_requests,
+            'blocked_requests': self.metrics.blocked_requests,
+            'block_rate': self.metrics.block_rate,
+            'bucket_utilization': self.metrics.bucket_utilization
+        }
+```
+
+## Production Considerations
+
+### Performance Optimization
+1. **Memory management**: Cleanup old rate limiters
+2. **Lock-free algorithms**: Use atomic operations where possible
+3. **Partitioning**: Distribute load across multiple instances
+
+### Scalability
+1. **Consistent hashing**: Distribute rate limiters across nodes
+2. **Eventual consistency**: Accept slight inconsistencies for performance
+3. **Local caching**: Cache rate limit decisions
+
+### Reliability
+1. **Graceful degradation**: Fall back to allowing requests on failures
+2. **Health checks**: Monitor rate limiter performance
+3. **Alerting**: Alert on high block rates or system failures
+
+## Conclusion
+
+Hierarchical rate limiting systems require careful design to balance protection, performance, and user experience. The key is to:
+
+1. Choose the right algorithm for your use case
+2. Implement proper monitoring and alerting
+3. Design for scalability and reliability
+4. Consider the trade-offs between accuracy and performance
+
+A well-designed rate limiting system is invisible to legitimate users while effectively protecting your infrastructure from abuse and overload.
+    5:["$","$L13",null,{"post":{"id":3,"title":"Designing Hierarchical Rate Limiting Systems","excerpt":"Deep dive into implementing scalable rate limiting solutions using Token Bucket algorithms for high-throughput applications.","content":"$14","category":"System Design","author":"Sachin Khoja","publishedAt":"2024-01-05","readTime":"14 min read","views":1879,"tags":["System Design","Rate Limiting","Performance","Algorithms","Scalability"],"featured":false}}]
+8:null
+c:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+7:null
+a:{"metadata":[["$","title","0",{"children":"Software Developer Portfolio"}],["$","meta","1",{"name":"description","content":"Modern portfolio showcasing innovative software development projects and expertise."}],["$","meta","2",{"name":"author","content":"Software Developer"}],["$","meta","3",{"name":"keywords","content":"software developer,portfolio,web development,full stack,technology"}],["$","meta","4",{"property":"og:title","content":"Software Developer Portfolio"}],["$","meta","5",{"property":"og:description","content":"Modern portfolio showcasing innovative software development projects and expertise."}],["$","meta","6",{"property":"og:type","content":"website"}],["$","meta","7",{"name":"twitter:card","content":"summary"}],["$","meta","8",{"name":"twitter:title","content":"Software Developer Portfolio"}],["$","meta","9",{"name":"twitter:description","content":"Modern portfolio showcasing innovative software development projects and expertise."}],["$","link","10",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+12:{"metadata":"$a:metadata","error":null,"digest":"$undefined"}
