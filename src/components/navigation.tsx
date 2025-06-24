@@ -6,6 +6,8 @@ import { Menu, X, Home, User, Briefcase, Code, Mail, FileText, Award } from "luc
 import { ThemeToggle } from "./theme-toggle"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import Image from "next/image"
+import router from "next/router"
 
 const navItems = [
   { name: "Home", href: "/", icon: Home },
@@ -43,16 +45,16 @@ export function Navigation() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-22">
             {/* Logo */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => router.push("/")}
+              style={{cursor: "pointer", marginTop: "10px"}}
               className="flex-shrink-0"
             >
-              <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
-                &lt;Dev/&gt;
-              </Link>
+              <Image src="/logo-removebg.png" alt="Sachin Khoja" width={96} height={96} />
             </motion.div>
 
             {/* Desktop Navigation */}

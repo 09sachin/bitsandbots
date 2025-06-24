@@ -14,14 +14,96 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Software Developer Portfolio",
-  description: "Modern portfolio showcasing innovative software development projects and expertise.",
-  keywords: ["software developer", "portfolio", "web development", "full stack", "technology"],
-  authors: [{ name: "Software Developer" }],
+  title: {
+    default: "BitsAndBots",
+    template: "%s | Sachin Khoja - BitsAndBots"
+  },
+  description: "Sachin Khoja is a passionate Full Stack Developer and Software Engineer at BitsAndBots, specializing in modern web development, React, Next.js, Node.js, and innovative software solutions. Explore my portfolio of cutting-edge projects and technical expertise.",
+  keywords: [
+    "Sachin Khoja",
+    "BitsAndBots",
+    "Full Stack Developer",
+    "Software Engineer",
+    "React Developer",
+    "Next.js Developer",
+    "Node.js Developer",
+    "JavaScript",
+    "TypeScript",
+    "Web Development",
+    "Frontend Developer",
+    "Backend Developer",
+    "Software Development",
+    "Portfolio",
+    "Tech Innovation",
+    "Programming",
+    "Software Solutions",
+    "Modern Web Apps",
+    "Responsive Design",
+    "API Development"
+  ],
+  authors: [{ name: "Sachin Khoja", url: "https://bitsandbots.dev" }],
+  creator: "Sachin Khoja",
+  publisher: "BitsAndBots",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
-    title: "Software Developer Portfolio",
-    description: "Modern portfolio showcasing innovative software development projects and expertise.",
     type: "website",
+    locale: "en_US",
+    url: "https://bitsandbots.dev",
+    siteName: "Sachin Khoja | BitsAndBots",
+    title: "Sachin Khoja | BitsAndBots - Full Stack Developer & Software Engineer",
+    description: "Explore the portfolio of Sachin Khoja, a passionate Full Stack Developer at BitsAndBots. Discover innovative software projects, technical expertise, and modern web development solutions.",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Sachin Khoja - BitsAndBots Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sachin Khoja | BitsAndBots - Full Stack Developer",
+    description: "Passionate Full Stack Developer at BitsAndBots specializing in modern web development and innovative software solutions.",
+    images: ["/logo.png"],
+    creator: "@sachinkhoja",
+  },
+  icons: {
+    icon: [
+      { url: "/favicon/favicon.ico", sizes: "any" },
+      { url: "/favicon/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+    ],
+    apple: [
+      { url: "/favicon/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [
+      {
+        rel: "mask-icon",
+        url: "/favicon/favicon.svg",
+        color: "#000000",
+      },
+    ],
+  },
+  manifest: "/favicon/site.webmanifest",
+  metadataBase: new URL("https://bitsandbots.dev"),
+  alternates: {
+    canonical: "https://bitsandbots.dev",
+  },
+  category: "technology",
+  classification: "portfolio",
+  verification: {
+    google: "your-google-verification-code", // Replace with actual verification code
   },
 };
 

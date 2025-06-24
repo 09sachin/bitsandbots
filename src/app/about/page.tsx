@@ -141,8 +141,7 @@ export default function About() {
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  My journey began at IIT Kharagpur, where I pursued a Dual Degree in Ocean Engineering and Naval Architecture 
-                  with a Minor in Mathematics and Computing, achieving a CGPA of 8.39/10.
+                  My journey began at IIT Kharagpur, where I pursued a bachelors of technology and masters of technology degree.
                 </p>
                 <p>
                   During my time at IIT, I developed a passion for competitive programming, achieving a rating of 1501 
