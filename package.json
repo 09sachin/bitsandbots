@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "predeploy": "npm run build && cp public/404.html out/ && cp public/index-redirect.html out/404.html && echo 'bitsandbots.in' > out/CNAME && touch out/.nojekyll",
+    "deploy": "gh-pages -d out --dotfiles"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.14",
