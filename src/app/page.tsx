@@ -72,6 +72,42 @@ export default function Home() {
     { name: "gRPC", icon: SiGraphql }
   ]
 
+  // Enhanced animated taglines with better timing
+  const taglines = [
+    "Building Scalable Solutions",
+    "Crafting AI-Powered Systems",
+    "Designing Cloud Architecture"
+  ]
+  
+  const [currentTagline, setCurrentTagline] = useState(0)
+  const [displayText, setDisplayText] = useState("")
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [charIndex, setCharIndex] = useState(0)
+  
+  useEffect(() => {
+    const currentText = taglines[currentTagline]
+    
+    const typingSpeed = 100
+    const pauseAfterComplete = 1500 // Pause when text is complete
+  
+    let timeout
+  
+    if (displayText === currentText) {
+      // Text is complete, pause then move to next tagline
+      timeout = setTimeout(() => {
+        setDisplayText("") // Clear text instantly
+        setCurrentTagline((prev) => (prev + 1) % taglines.length)
+      }, pauseAfterComplete)
+    } else {
+      // Continue typing
+      timeout = setTimeout(() => {
+        setDisplayText(currentText.slice(0, displayText.length + 1))
+      }, typingSpeed)
+    }
+  
+    return () => clearTimeout(timeout)
+  }, [displayText, currentTagline])
+
   // Looping terminal typing effect with auto-scroll
   const [terminalText, setTerminalText] = useState("")
   const [showCursor, setShowCursor] = useState(true)
@@ -326,8 +362,8 @@ export default function Home() {
           <div className="max-w-7xl mx-auto w-full">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
               
-              {/* Text Column */}
-              <motion.div className="order-2 lg:order-1 text-center lg:text-left px-2 sm:px-0">
+              {/* Text Column - Always first on mobile, first on desktop */}
+              <motion.div className="text-center lg:text-left px-2 sm:px-0">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -343,14 +379,17 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold mb-3 md:mb-4 leading-tight"
+                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold mb-3 md:mb-4 leading-tight min-h-[2.5em] sm:min-h-[1em] lg:min-h-[2.5em]"
                 >
-                  <span className="bg-gradient-to-r from-gray-900 via-blue-800 to-blue-900 dark:from-white dark:via-blue-200 dark:to-cyan-200 bg-clip-text text-transparent">
-                    Building Scalable
-                  </span>
-                  <br />
-                  <span className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 dark:from-blue-400 dark:via-cyan-400 dark:to-sky-400 bg-clip-text text-transparent">
-                    Solutions
+                  <span className="bg-gradient-to-r from-gray-900 via-blue-800 to-blue-900 dark:from-white dark:via-blue-200 dark:to-cyan-200 bg-clip-text text-transparent" style={{lineHeight: '1.25em'}}>
+                    {displayText}
+                    <motion.span 
+                      className="text-blue-500 dark:text-cyan-400"
+                      animate={{ opacity: [1, 0, 1] }}
+                      transition={{ duration: 1, repeat: Infinity }}
+                    >
+                      |
+                    </motion.span>
                   </span>
                 </motion.h1>
 
@@ -358,17 +397,60 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.6 }}
-                  className="text-sm sm:text-base lg:text-lg text-muted-foreground mb-4 md:mb-6 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
+                  className="hidden lg:block text-sm sm:text-base lg:text-lg text-muted-foreground mb-4 md:mb-6 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
                 >
                   I&apos;m a Software Engineer specializing in full-stack development, with expertise in building scalable applications,
                   microservices architecture, and cloud solutions. IIT Kharagpur graduate with experience at Vellex Computing, National Health Authority, and more.
                 </motion.p>
 
+                {/* Mobile Terminal - Replaces text description on mobile */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                  className="lg:hidden mb-4 md:mb-6 w-full max-w-md mx-auto"
+                >
+                  <div className="rounded-lg border border-gray-700/50 bg-gray-900/95 shadow-xl overflow-hidden backdrop-blur-sm" style={{textAlign: 'left'}}>
+                    <div className="flex items-center justify-between px-3 py-1.5 bg-gray-800/80 border-b border-gray-700/50">
+                      <div className="flex gap-1.5">
+                        <span className="w-2 h-2 bg-red-500 rounded-full" />
+                        <span className="w-2 h-2 bg-yellow-500 rounded-full" />
+                        <span className="w-2 h-2 bg-green-500 rounded-full" />
+                      </div>
+                      <div className="flex items-center gap-1.5 text-gray-300 text-xs font-mono">
+                        <Terminal className="w-3 h-3" />
+                        <span>zsh</span>
+                      </div>
+                      <div className="flex gap-1 opacity-60">
+                        <Maximize2 className="w-2.5 h-2.5 text-gray-400" />
+                        <X className="w-2.5 h-2.5 text-gray-400" />
+                      </div>
+                    </div>
+                    <div 
+                      className="p-3 h-36 overflow-y-auto bg-gray-900/60 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-transparent"
+                      style={{
+                        scrollBehavior: 'smooth'
+                      }}
+                    >
+                      <pre className="text-green-400 font-mono text-xs leading-relaxed whitespace-pre-wrap">
+                        {terminalText}
+                        <motion.span 
+                          className="text-green-400"
+                          animate={{ opacity: showCursor ? 1 : 0 }}
+                          transition={{ duration: 0.1 }}
+                        >
+                          ▊
+                        </motion.span>
+                      </pre>
+                    </div>
+                  </div>
+                </motion.div>
+
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.8 }}
-                  className="flex flex-col sm:flex-row gap-2 md:gap-3 justify-center lg:justify-start mb-4 md:mb-6"
+                  className="hidden lg:flex flex-col sm:flex-row gap-2 md:gap-3 justify-center lg:justify-start mb-4 md:mb-6"
                 >
                   <Link href="/projects">
                     <motion.button
@@ -396,7 +478,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 1 }}
-                  className="flex justify-center lg:justify-start gap-3 md:gap-4"
+                  className="hidden lg:flex justify-center lg:justify-start gap-3 md:gap-4 mb-8 lg:mb-0"
                 >
                   {[
                     { icon: Github, href: "https://github.com/invincible009", label: "GitHub" },
@@ -419,12 +501,12 @@ export default function Home() {
                 </motion.div>
               </motion.div>
 
-              {/* Enhanced Terminal Column */}
+              {/* Enhanced Terminal Column - Hidden on mobile, shown on desktop */}
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="order-1 lg:order-2 w-full max-w-sm sm:max-w-md lg:max-w-lg mx-auto"
+                className="hidden lg:block w-full max-w-sm sm:max-w-md lg:max-w-lg mx-auto"
               >
                 <div className="rounded-lg md:rounded-xl border border-gray-700/50 bg-gray-900/95 shadow-xl md:shadow-2xl overflow-hidden backdrop-blur-sm">
                   <div className="flex items-center justify-between px-3 py-1.5 md:px-4 md:py-2 bg-gray-800/80 border-b border-gray-700/50">
@@ -435,8 +517,7 @@ export default function Home() {
                     </div>
                     <div className="flex items-center gap-1.5 md:gap-2 text-gray-300 text-xs md:text-sm font-mono">
                       <Terminal className="w-3 h-3 md:w-4 md:h-4" />
-                      <span className="hidden sm:inline">portfolio — zsh</span>
-                      <span className="sm:hidden">zsh</span>
+                      <span>portfolio — zsh</span>
                     </div>
                     <div className="flex gap-1 opacity-60">
                       <Maximize2 className="w-2.5 h-2.5 md:w-3 md:h-3 text-gray-400" />
@@ -467,8 +548,61 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Mobile Action Buttons at Bottom */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+          className="lg:hidden px-4 pb-4 flex-shrink-0"
+        >
+          <div className="flex flex-col gap-3 max-w-sm mx-auto">
+            <Link href="/projects">
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm"
+              >
+                View My Work
+                <ExternalLink className="w-4 h-4" />
+              </motion.button>
+            </Link>
+            <Link href="/contact">
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full px-6 py-3 border border-border/50 hover:border-primary/50 rounded-full transition-all duration-300 flex items-center justify-center gap-2 glass-effect text-sm"
+              >
+                Contact Me
+                <Mail className="w-4 h-4" />
+              </motion.button>
+            </Link>
+            
+            {/* Mobile Social Media Icons */}
+            <div className="flex justify-center gap-4 mt-2 pt-3 border-t border-border/20">
+              {[
+                { icon: Github, href: "https://github.com/invincible009", label: "GitHub" },
+                { icon: Linkedin, href: "https://linkedin.com/in/sachin-kgp", label: "LinkedIn" },
+                { icon: Mail, href: "mailto:sachinkhoja18@gmail.com", label: "Email" },
+              ].map(({ icon: Icon, href, label }) => (
+                <motion.a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-full bg-accent/50 hover:bg-accent transition-colors border border-border/20 hover:border-primary/30"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Icon className="w-4 h-4" />
+                  <span className="sr-only">{label}</span>
+                </motion.a>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
         {/* Skills Marquee at Bottom */}
-        <div className="relative py-6 sm:py-12 md:py-16 lg:py-20 flex-shrink-0">
+        <div className="relative py-4 sm:py-6 md:py-8 lg:py-12 xl:py-16 flex-shrink-0">
           <div className="overflow-hidden mask-gradient">
             <motion.div
               animate={{ x: ["0%", "-50%"] }}
