@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     "Responsive Design",
     "API Development"
   ],
-  authors: [{ name: "Sachin Khoja", url: "https://bitsandbots.dev" }],
+  authors: [{ name: "Sachin Khoja", url: "https://bitsandbots.in" }],
   creator: "Sachin Khoja",
   publisher: "BitsAndBots",
   robots: {
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://bitsandbots.dev",
+    url: "https://bitsandbots.in",
     siteName: "Sachin Khoja | BitsAndBots",
     title: "Sachin Khoja | BitsAndBots - Full Stack Developer & Software Engineer",
     description: "Explore the portfolio of Sachin Khoja, a passionate Full Stack Developer at BitsAndBots. Discover innovative software projects, technical expertise, and modern web development solutions.",
@@ -96,9 +96,9 @@ export const metadata: Metadata = {
     ],
   },
   manifest: "/favicon/site.webmanifest",
-  metadataBase: new URL("https://bitsandbots.dev"),
+  metadataBase: new URL("https://bitsandbots.in"),
   alternates: {
-    canonical: "https://bitsandbots.dev",
+    canonical: "https://bitsandbots.in",
   },
   category: "technology",
   classification: "portfolio",
