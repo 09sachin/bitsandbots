@@ -138,7 +138,7 @@ export default function Home() {
       "$ ls experience/",
       "2020/ 2021/ 2022/ 2023/ 2024/",
       "buddin/ cuvette/ quantsolar/ timelyai/",
-      "spinny/ egato/ koo/ nha/ vellex/",
+      "spinny/ Legato/ koo/ nha/ vellex/",
       "",
       "$ cat experience.txt",
       "• Vellex Computing - Software Engineer (Current)",
