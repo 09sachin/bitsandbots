@@ -47,13 +47,13 @@ export default function Contact() {
     {
       icon: Phone,
       label: "Phone",
-      value: "+91 6377035564",
-      href: "tel:+916377035564"
+      value: "+91 xxxxxxxxxx",
+      href: "tel:+91xxxxxxxxxx"
     },
     {
       icon: MapPin,
       label: "Location",
-      value: "San Francisco, CA",
+      value: "New Delhi, India",
       href: "https://maps.google.com"
     }
   ]
@@ -68,7 +68,7 @@ export default function Contact() {
     {
       icon: Linkedin,
       label: "LinkedIn", 
-      href: "https://linkedin.com/in/sachin-kgp",
+      href: "https://linkedin.com/in/",
       color: "hover:text-blue-400"
     },
     {

@@ -11,7 +11,7 @@ export default function Experience() {
       company: "Vellex Computing",
       position: "Software Engineer",
       duration: "Oct 2024 - Present",
-      location: "San Francisco, CA",
+      location: "San Francisco, CA (Remote)",
       type: "Full-time",
       description: "Building regulatory data solutions for the energy sector, developing scraping engines and AI-powered tools for utility compliance.",
       achievements: [

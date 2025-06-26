@@ -482,7 +482,7 @@ export default function Home() {
                 >
                   {[
                     { icon: Github, href: "https://github.com/invincible009", label: "GitHub" },
-                    { icon: Linkedin, href: "https://linkedin.com/in/sachin-kgp", label: "LinkedIn" },
+                    { icon: Linkedin, href: "https://linkedin.com/in", label: "LinkedIn" },
                     { icon: Mail, href: "mailto:sachinkhoja18@gmail.com", label: "Email" },
                   ].map(({ icon: Icon, href, label }) => (
                     <motion.a
