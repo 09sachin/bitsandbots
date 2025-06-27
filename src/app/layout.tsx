@@ -21,6 +21,21 @@ export const metadata: Metadata = {
   description: "Sachin Khoja is a passionate Full Stack Developer and Software Engineer at BitsAndBots, specializing in modern web development, React, Next.js, Node.js, and innovative software solutions. Explore my portfolio of cutting-edge projects and technical expertise.",
   keywords: [
     "Bits and Bots",
+    "Bit and bots - Everything AI, Automation, Scalable systems",
+    "Bit and bots - Everything AI, Automation, Scalable systems by Sachin Khoja",
+    "Bit and bots - Everything AI, Automation, Scalable systems by Sachin Khoja",
+    "Bits and bots - financial tools",
+    "Bits and bots - financial tools by Sachin Khoja",
+    "Bits and bots - financial tools by Sachin Khoja",
+    "SIP return calculator",
+    "Mutual fund calculator",
+    "Mutual fund returns calculator",
+    "Mutual fund returns calculator by Bits and Bots",
+    "Mutual fund returns calculator by Bits and Bots by Sachin Khoja",
+    "Mutual fund returns calculator by Bits and Bots by Sachin Khoja",
+    "SIP returns calculator by Bits and Bots",
+    "SIP returns calculator by Bits and Bots by Sachin Khoja",
+    "SIP returns calculator by Bits and Bots by Sachin Khoja",
     "Bits and Bots AI",
     "Bits and Bots Backend",
     "Bits and Bots Frontend",
@@ -884,6 +899,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <meta name="google-adsense-account" content="ca-pub-7857255548980209" />
+      </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
