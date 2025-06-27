@@ -901,6 +901,12 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="google-adsense-account" content="ca-pub-7857255548980209" />
+        <meta name="geo.region" content="IN" />
+        <meta name="geo.country" content="India" />
+        <meta name="language" content="English" />
+        <meta name="revisit-after" content="7 days" />
+        <meta name="distribution" content="global" />
+        <meta name="rating" content="general" />
       </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         <ThemeProvider
